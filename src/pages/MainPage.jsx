@@ -6,7 +6,7 @@ function MainPage({ toggleTheme, background }) {
   return (
     <>
       <Header toggleTheme={toggleTheme} background={background} />
-      <Content />
+      <Content toggleTheme={toggleTheme} background={background} />
     </>
   );
 }
