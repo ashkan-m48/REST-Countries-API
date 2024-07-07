@@ -1,8 +1,8 @@
-export default function getData(url) {
+export const getData = async (url) => {
   try {
-    const res = fetch(url);
-    return res.json();
+    const res = await fetch(url);
+    return await res.json();
   } catch (error) {
     console.log(error);
   }
-}
+};
