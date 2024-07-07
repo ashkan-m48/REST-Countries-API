@@ -7,15 +7,17 @@ import { getData } from "../../utils/fetcherData";
 import "./cars.css";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 function Cards({ background }) {
+  const dispatch = useDispatch();
+
   const [info, setInfo] = useState([]);
-  console.log(background);
+
   useEffect(() => {
     getData(
       "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital "
     ).then((data) => {
-      console.log(data);
       setInfo(data);
     });
   }, []);
