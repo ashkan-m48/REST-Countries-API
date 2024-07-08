@@ -3,6 +3,7 @@ import { Container, InputBase } from "@mui/material";
 import "./searchBar.css";
 import Paper from "@mui/material/Paper";
 import SearchIcon from "@mui/icons-material/Search";
+import { useSelector } from "react-redux";
 
 function SearchBar({ background }) {
   function handleChange(e) {

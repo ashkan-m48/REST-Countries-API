@@ -7,12 +7,12 @@ import { getData } from "../../utils/fetcherData";
 import "./cars.css";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Cards({ background }) {
-  const dispatch = useDispatch();
-
   const [info, setInfo] = useState([]);
+
+  const countries = useSelector((store) => store.cards);
 
   useEffect(() => {
     getData(
