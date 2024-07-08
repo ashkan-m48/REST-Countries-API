@@ -7,15 +7,17 @@ import { getData } from "../../utils/fetcherData";
 import "./cars.css";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
+import { useSelector } from "react-redux";
 
 function Cards({ background }) {
   const [info, setInfo] = useState([]);
-  console.log(background);
+
+  const countries = useSelector((store) => store.cards);
+
   useEffect(() => {
     getData(
       "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital "
     ).then((data) => {
-      console.log(data);
       setInfo(data);
     });
   }, []);
