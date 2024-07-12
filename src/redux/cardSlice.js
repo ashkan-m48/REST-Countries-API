@@ -1,25 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-let initialState = { countries: [] };
-
-async function recieveData() {
-  const res = await fetch(
-    "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital"
-  );
-  const obj = res.json();
-  return obj;
-}
+export const fetchCountries = createAsyncThunk("fetchCountries", async () => {
+  try {
+    const res = await fetch(
+      "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital"
+    );
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const cardSlice = createSlice({
   name: "card",
-  initialState: initialState,
+  initialState: { data: [], searchText: "" },
   reducers: {
-    addCountries: (state, action) => {
-      state.countries.push(action.payload);
+    setSearchText: (state, action) => {
+      state.searchText = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchCountries.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
   },
 });
 
-export const { addCountries } = cardSlice.actions;
+export const { setSearchText } = cardSlice.actions;
 
 export default cardSlice.reducer;

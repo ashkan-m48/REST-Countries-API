@@ -2,30 +2,31 @@
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import { useEffect, useState } from "react";
-import { getData } from "../../utils/fetcherData";
+import { useEffect } from "react";
+
 import "./cars.css";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCountries } from "../../redux/cardSlice";
 
 function Cards({ background }) {
-  const [info, setInfo] = useState([]);
-
-  const countries = useSelector((store) => store.cards);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getData(
-      "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital "
-    ).then((data) => {
-      setInfo(data);
-    });
-  }, []);
+    dispatch(fetchCountries());
+  }, [dispatch]);
+
+  const { data, searchText } = useSelector((state) => state.cards);
+
+  const filteredData = data.filter((obj) => {
+    return obj.name.common.toLowerCase().includes(searchText.toLowerCase());
+  });
 
   return (
     <Container>
       <Grid container spacing={3}>
-        {info.map((obj, index) => {
+        {filteredData.map((obj, index) => {
           return (
             <Grid item xs={10} md={3} key={index}>
               <Paper

@@ -3,11 +3,15 @@ import { Container, InputBase } from "@mui/material";
 import "./searchBar.css";
 import Paper from "@mui/material/Paper";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setSearchText } from "../../redux/cardSlice";
 
 function SearchBar({ background }) {
+  const dispatch = useDispatch();
+
   function handleChange(e) {
-    console.dir(e.target.value);
+    const searchText = e.target.value;
+    dispatch(setSearchText(searchText));
   }
 
   return (
