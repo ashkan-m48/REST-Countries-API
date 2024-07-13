@@ -28,7 +28,7 @@ function Cards({ background }) {
       <Grid container spacing={3}>
         {filteredData.map((obj, index) => {
           return (
-            <Grid item xs={10} md={3} key={index}>
+            <Grid item xs={12} md={3} key={index}>
               <Paper
                 elevation={3}
                 sx={
