@@ -35,7 +35,7 @@ function SearchBar({ background }) {
               p: "2px 4px",
               display: "flex",
               alignItems: "center",
-              width: 400,
+              maxWidth: 400,
               marginBottom: "20px",
               height: "50px",
             }

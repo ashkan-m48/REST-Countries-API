@@ -5,7 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSearchText } from "../../redux/cardSlice";
+import { setFilterText } from "../../redux/cardSlice";
 
 function Filter({ background }) {
   const [countries, setCountries] = useState("");
@@ -14,7 +14,7 @@ function Filter({ background }) {
   const handleChange = (e) => {
     setCountries(e.target.value);
     const searchText = e.target.value;
-    dispatch(setSearchText(searchText));
+    dispatch(setFilterText(searchText));
   };
 
   console.log(countries);
