@@ -4,18 +4,20 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setFilterText } from "../../redux/cardSlice";
 
 function Filter({ background }) {
-  const [age, setAge] = useState("");
-
-  const continents = useSelector((state) => state.cards);
-  console.log(continents.data);
+  const [countries, setCountries] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setAge(e.target.value);
+    setCountries(e.target.value);
+    const searchText = e.target.value;
+    dispatch(setFilterText(searchText));
   };
 
+  console.log(countries);
   return (
     <div>
       <FormControl sx={{ m: 0.5, minWidth: 200, marginBottom: "25px" }}>
@@ -25,7 +27,7 @@ function Filter({ background }) {
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
-          value={age}
+          value={countries}
           onChange={handleChange}
           fullWidth
           label="Filter by Region"

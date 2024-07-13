@@ -17,10 +17,16 @@ function Cards({ background }) {
     dispatch(fetchCountries());
   }, [dispatch]);
 
-  const { data, searchText } = useSelector((state) => state.cards);
+  const { data, searchText, filterText } = useSelector((state) => state.cards);
 
   const filteredData = data.filter((obj) => {
-    return obj.name.common.toLowerCase().includes(searchText.toLowerCase());
+    if (searchText) {
+      return obj.name.common.toLowerCase().includes(searchText.toLowerCase());
+    } else if (filterText) {
+      return obj.region.toLowerCase().includes(filterText.toLowerCase());
+    } else {
+      return obj;
+    }
   });
 
   return (

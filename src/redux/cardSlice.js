@@ -14,10 +14,13 @@ export const fetchCountries = createAsyncThunk("fetchCountries", async () => {
 
 const cardSlice = createSlice({
   name: "card",
-  initialState: { data: [], searchText: "" },
+  initialState: { data: [], searchText: "", filterText: "" },
   reducers: {
     setSearchText: (state, action) => {
       state.searchText = action.payload;
+    },
+    setFilterText: (state, action) => {
+      state.filterText = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -27,6 +30,6 @@ const cardSlice = createSlice({
   },
 });
 
-export const { setSearchText } = cardSlice.actions;
+export const { setSearchText, setFilterText } = cardSlice.actions;
 
 export default cardSlice.reducer;
