@@ -20,7 +20,10 @@ function Cards({ background }) {
   const { data, searchText } = useSelector((state) => state.cards);
 
   const filteredData = data.filter((obj) => {
-    return obj.name.common.toLowerCase().includes(searchText.toLowerCase());
+    return (
+      obj.name.common.toLowerCase().includes(searchText.toLowerCase()) ||
+      obj.region.toLowerCase().includes(searchText.toLowerCase())
+    );
   });
 
   return (
