@@ -41,10 +41,12 @@ function Cards({ background }) {
                   background
                     ? {
                         backgroundColor: "hsl(0, 0%, 98%)",
+                        cursor: "pointer",
                       }
                     : {
                         backgroundColor: "hsl(209, 23%, 22%)",
                         color: "hsl(0, 0%, 100%)",
+                        cursor: "pointer",
                       }
                 }
                 square={false}
