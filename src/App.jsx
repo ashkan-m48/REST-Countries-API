@@ -3,7 +3,7 @@ import "./app.css";
 
 import MainPage from "./pages/MainPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Individul from "./pages/Individul";
+import Individul from "./pages/secondPage/Individul";
 
 function App() {
   const [isLight, setIsLight] = useState(true);
@@ -20,7 +20,15 @@ function App() {
               />
             }
           />
-          <Route path="/country" element={<Individul />} />
+          <Route
+            path="/country"
+            element={
+              <Individul
+                toggleTheme={() => setIsLight(!isLight)}
+                background={isLight}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>
