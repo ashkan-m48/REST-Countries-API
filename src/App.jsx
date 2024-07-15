@@ -21,7 +21,7 @@ function App() {
             }
           />
           <Route
-            path="/country"
+            path="/country/:name"
             element={
               <Individul
                 toggleTheme={() => setIsLight(!isLight)}

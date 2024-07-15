@@ -7,7 +7,7 @@ function Individul({ toggleTheme, background }) {
   return (
     <div data-theme={background ? "light" : "dark"}>
       <Header toggleTheme={toggleTheme} background={background} />
-      <Content />
+      <Content toggleTheme={toggleTheme} background={background} />
     </div>
   );
 }
