@@ -2,6 +2,7 @@
 import { Button, Container, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link, useLocation } from "react-router-dom";
+import "./content.css";
 
 function Content({ background }) {
   const location = useLocation();
@@ -33,42 +34,22 @@ function Content({ background }) {
           }
         >
           <ArrowBackIcon />
-          Back
+          Back To Main Page
         </Button>
       </Stack>
-      <Stack
-        sx={{
-          marginTop: "40px",
-          width: "100%",
-          height: "70vh",
-          display: "flex",
-          flexDirection: "row",
-        }}
-        gap={10}
-      >
-        <div className="image">
-          <img
-            src={location.state.flags.png}
-            alt={location.state.name.common}
-            style={{ height: "400px", width: "500px" }}
-          />
-        </div>
-        <div
-          className="container of all content"
-          style={{ padding: "10px", display: "flex", flexDirection: "column" }}
-        >
+      <div className="informationPart">
+        <img
+          src={location.state.flags.png}
+          alt={location.state.name.common}
+          className="countriesImage"
+        />
+
+        <div className="containerOfAllContent">
           <h3 style={{ fontWeight: "700", marginBottom: "30px" }}>
             {location.state.name.common}
           </h3>
-          <div
-            className=" of details"
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
+          <div className="details">
+            <div className="leftFront">
               <p
                 style={{
                   fontWeight: "700",
@@ -130,7 +111,7 @@ function Content({ background }) {
                 </span>
               </p>
             </div>
-            <div>
+            <div className="rightFront">
               <p style={{ fontWeight: "700", fontSize: "12pt" }}>
                 Top Level Domain:&nbsp;
                 <span style={{ fontWeight: "400" }}>{location.state.tld}</span>
@@ -151,10 +132,7 @@ function Content({ background }) {
               </p>
             </div>
           </div>
-          <div
-            className="borderButtons"
-            style={{ marginTop: "25px", fontWeight: "700", fontSize: "12pt" }}
-          >
+          <div className="borderButtons">
             Border Countries:&nbsp;
             {location.state.borders.map((item, index) => {
               return (
@@ -184,7 +162,7 @@ function Content({ background }) {
             })}
           </div>
         </div>
-      </Stack>
+      </div>
     </Container>
   );
 }
