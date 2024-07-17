@@ -22,7 +22,7 @@ function Content({ background }) {
       <Stack direction="row" sx={{ marginTop: "25px" }}>
         <Button
           variant="outlined"
-          href="/"
+          href="/REST-Countries-API/"
           sx={
             background
               ? {}
