@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/"
+            path="/REST-Countries-API/"
             element={
               <MainPage
                 toggleTheme={() => setIsLight(!isLight)}
