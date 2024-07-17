@@ -138,7 +138,9 @@ function Content({ background }) {
               return (
                 <Link
                   key={index}
-                  to={`/country/${findTheNameOfCountry(item).name.common}`}
+                  to={`/REST-Countries-API/country/${
+                    findTheNameOfCountry(item).name.common
+                  }`}
                   state={findTheNameOfCountry(item)}
                 >
                   <Button
