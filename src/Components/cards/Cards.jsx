@@ -39,7 +39,7 @@ function Cards({ background }) {
           return (
             <Grid item xs={12} md={3} key={index}>
               <Link
-                to={`/country/${obj.name.common}`}
+                to={`/REST-Countries-API/country/${obj.name.common}`}
                 style={{ textDecoration: "none" }}
                 state={obj}
               >
